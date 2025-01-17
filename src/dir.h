@@ -14,6 +14,9 @@ void print_dir();
 
 void change_dir(const char* dir);
 
+void go_home();
+
+
 std::string get_dir();
 
 #endif

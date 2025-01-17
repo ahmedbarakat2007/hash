@@ -28,7 +28,6 @@ void start_shell(){
             perror("hash : gethostname failed");
             return;
         }
-
         print_dir();
         printf("▓█▓▒░ ");
 
@@ -54,7 +53,7 @@ void start_shell(){
             if (arg.size() > 1) {
                 change_dir(arg[1].c_str());
             } else {
-                cerr << "cd: missing argument" << endl;
+                go_home();
             }
         } else if (command == "ls") {
             ls();

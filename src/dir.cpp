@@ -39,17 +39,19 @@ void print_dir(){
         exit(0);
     }
 }
+void go_home(){
+    fs::current_path(get_home());
+}
 void change_dir(const char* dir){
     if (strcmp(dir, "~/") == 0){
-        fs::current_path(get_home());
+        go_home();
         return;
     }
     if (fs::exists(dir) && fs::is_directory(dir)) {
         fs::current_path(dir);
     }else{
-        cerr << "cd : No Such Directory" << endl;
+        cerr << "cd : No such Directory" << endl;
     }
-
 }
 
 string get_dir(){
