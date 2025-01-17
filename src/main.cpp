@@ -14,11 +14,17 @@
 #include <vector>
 #include <string>
 #include "shell.h"
+#include <csignal>
 
 using namespace std;
 
+void handleSigint(int signal) {
+    //do nothing
+}
+
 int main() {
     //exec("export", {"SHELL=hash"});
+    signal(SIGINT, handleSigint);
     start_shell();
     return 0;
 }
