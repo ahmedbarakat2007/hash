@@ -34,7 +34,13 @@ bool is_executable(const fs::path& p) {
 void ls() {
     std::string path = fs::current_path().string();
     for (const auto& entry : fs::directory_iterator(path)) {
-        if (entry.is_directory()) {
+        if (entry.path().filename().string().front() == '.' ){
+            //do not print
+        }
+        else if (entry.is_directory() && entry.path().filename().string().front() == '.' ){
+            //do not print
+        }
+        else if (entry.is_directory()) {
             print_files(entry.path().filename().c_str(), "bright_cyan");
         }
         else if (is_executable(entry) || entry.path().extension() == ".apk"){
@@ -164,7 +170,6 @@ void ls() {
             entry.path().extension() == ".raw") {
                 print_files(entry.path().filename().c_str(), "magenta");
         }
-
         else{
             print_files(entry.path().filename().c_str(), "white");
         }
